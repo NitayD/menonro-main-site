@@ -1,11 +1,12 @@
 {
   "name": "menonro-online",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "start-serve": "node ./node_modules/.bin/pm2 start app.js -i max --attach"
   },
   "dependencies": {
     "next": "9.0.6",
