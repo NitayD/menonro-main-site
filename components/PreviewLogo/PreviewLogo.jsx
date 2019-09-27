@@ -5,8 +5,8 @@ const PreviewLogo = () => (
         <svg width="542px" height="77px" viewBox="0 0 170.27 24.34">
         <defs>
             <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stop-color="#00bc9b" />
-            <stop offset="100%" stop-color="#5eaefd" />
+                <stop offset="0%" stopColor="#00bc9b" />
+                <stop offset="100%" stopColor="#5eaefd" />
             </linearGradient>
         </defs>
         <g id="Слой_x0020_1">
