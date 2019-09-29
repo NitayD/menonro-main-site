@@ -2,9 +2,20 @@ import React, { Component } from 'react'
 import PreloaderLogo from './PreloaderLogo'
 
 class Preloader extends Component {
-    
+    state = {
+        isLoading: true
+    }
+    handleLoading = () => setTimeout(() => {
+        this.setState({
+            isLoading: false
+        })
+    }, 2000)
+
+    componentDidMount() {
+        typeof document !== 'undefined' && this.handleLoading()
+    }
     render() {
-        return (
+        return !this.state.isLoading ? <></> : (
             <>
                 <div className="preloader">
                     <div className="preloader__inside">
@@ -19,7 +30,7 @@ class Preloader extends Component {
                         left: 0;
                         width: 100vw;
                         height: 100vh;
-                        background: rgba(0,0,0,.8) url('/static/bgs/main-min.jpg') no-repeat 50% 50%;
+                        background: rgba(0,0,0,.8) url('/static/bgs/menonro-bg.jpg') no-repeat 50% 50%;
                         background-size: cover;
                         display: flex;
                         align-items: center;
@@ -32,7 +43,7 @@ class Preloader extends Component {
                         left: 0;
                         bottom: 0;
                         right: 0;
-                        background-color: rgba(0,0,0,.9);
+                        background-color: rgba(0,0,0,.5);
                     }
                     .preloader__inside {
                         position: relative;
