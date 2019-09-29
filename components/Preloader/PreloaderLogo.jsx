@@ -9,34 +9,44 @@ const PreloaderLogo = () => {
             </g>
         </svg>
         <style jsx>{`
-                    .str0 {stroke:black;stroke-width:0.74;stroke-miterlimit:22.9256}
-                    .fil0 {fill:white;fill-rule:nonzero}
-                    #MenonroLoading {
-                        stroke-dasharray: 950;
-                        stroke-dashoffset: 950;
-                        stroke: rgba(255,255,255,1);
-                        fill: rgba(0,0,0,0);
-                        animation: loading 2s ease-in forwards;
-                        animation-iteration-count: infinite;
-                        transform: scale(.99);
-                        transform-origin: center center;
-                    }
-                    @keyframes loading {
-                        25% {
-                            transform: scale(1);
-                        }
-                        50% {
-                            fill: rgba(255,255,255,1);
-                            stroke-dashoffset: 0;
-                            stroke: rgba(0,0,0,0);
-                            transform: scale(.99);
-                        }
-                        75% {
-                            transform: scale(1);
-                        }
-                    }
-                `}
-                </style>
+            .str0 {stroke:black;stroke-width:0.74;stroke-miterlimit:22.9256}
+            .fil0 {fill:white;fill-rule:nonzero}
+            #MenonroLoading {
+                stroke-dasharray: 950;
+                stroke-dashoffset: 950;
+                stroke: rgba(255,255,255,1);
+                fill: rgba(0,0,0,0);
+                animation: loading 2s ease-in forwards;
+                animation-iteration-count: infinite;
+                transform: scale(.99);
+                transform-origin: center center;
+            }
+            @keyframes loading {
+                25% {
+                    transform: scale(1);
+                }
+                50% {
+                    fill: rgba(255,255,255,1);
+                    stroke-dashoffset: 0;
+                    stroke: rgba(0,0,0,0);
+                    transform: scale(.99);
+                }
+                75% {
+                    transform: scale(1);
+                }
+            }
+            @media screen and (max-width: 768px) {
+                svg {
+                    width: 440px
+                }
+            }
+            @media screen and (max-width: 520px) {
+                svg {
+                    width: 220px
+                }
+            }
+        `}
+        </style>
         </>
     )
 }
