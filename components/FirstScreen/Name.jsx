@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Name = ({ type }) => {
+const Name = ({ type, offset = false }) => {
   return (
     <>
       {
@@ -26,28 +26,36 @@ const Name = ({ type }) => {
       }
       <style jsx>{`
         .name__block {
-          padding: 15vh 15px 0;
+          ${ offset ? 'padding: 15vh 15px 0;' : '' }
           text-align: center;
         }
         .name {
           font-size: calc(2.25rem + 10px);
+          @media screen and (max-width: 1199px) {
+            font-size: calc(1.75rem + 10px)
+          }
+          @media screen and (max-width: 991px) {
+            font-size: calc(1.5rem + 8px)
+          }
+          @media screen and (max-width: 768px) {
+            font-size: calc(1.75rem + 10px);
+          }
+          @media screen and (max-width: 520px) {
+            font-size: calc(1.25rem + 10px);
+          }
         }
         .skills {
           font-size: calc(1.5rem + 10px);
-        }
-        @media screen and (max-width: 768px) {
-          .name {
-            font-size: calc(1.75rem + 10px);
+          @media screen and (max-width: 1199px) {
+            font-size: calc(1.25rem + 10px)
           }
-          .skills {
-            font-size: calc(1rem + 10px);
+          @media screen and (max-width: 991px) {
+            font-size: calc(1rem + 10px)
           }
-        }
-        @media screen and (max-width: 520px) {
-          .name {
-            font-size: calc(1.25rem + 10px);
+          @media screen and (max-width: 768px) {
+            font-size: calc(1rem + 5px);
           }
-          .skills {
+          @media screen and (max-width: 520px) {
             font-size: calc(0.25rem + 10px);
           }
         }
