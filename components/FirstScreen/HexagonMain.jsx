@@ -48,7 +48,6 @@ export default class HexadonMain extends PureComponent {
             width: 100%;
             overflow: hidden;
             text-align: center;
-            ${this.props.setRef ? 'transition: transform ease-in, opacity .2s ease-in;' : ''}
           }
           .hex {
             position: absolute;
@@ -78,8 +77,8 @@ export default class HexadonMain extends PureComponent {
               top: -10px; left: -10px; right: -10px; bottom: -10px;
             }
             &Container:hover {
-              .hex:before {
-                background-size: auto 140%;
+              .hex {
+                ${ hover ? `background-size: auto 140%;` : '' }
               }
             }
             &Container:hover &InnerCenter > * {
@@ -131,10 +130,8 @@ export default class HexadonMain extends PureComponent {
             }
             &Center {
               line-height: 1.5;
-              position: relative;
               z-index: 7;
               text-shadow: 0 0 0 #212121;
-              animation: simpleHexadonMove 300s infinite ${this.state.randDuractionAnmimated}s;
               > * {
                 display: flex;
                 align-items: center;

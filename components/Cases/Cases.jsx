@@ -5,6 +5,8 @@ import { Container, Row, Col } from 'react-bootstrap'
 import Hexadone from '../FirstScreen/HexagonMain'
 
 import ContentTitle from '../Typographic/ContentTitle'
+import BackBtn from '../Typographic/BackBtn'
+import MenuBtn from '../Typographic/MenuBtn'
 
 import cases from './cases.json'
 
@@ -20,7 +22,17 @@ class Cases extends Component {
         <Container>
           <Row className="justify-content-center">
             <Col sm="auto">
+              <div className="mt-5 mb-3">
+                <BackBtn/>
+              </div>
+            </Col>
+            <Col sm="auto">
               <ContentTitle>Выполненные проекты</ContentTitle>
+            </Col>
+            <Col sm="auto">
+              <div className="mt-5 mb-3">
+                <MenuBtn/>
+              </div>
             </Col>
           </Row>
         </Container>
@@ -59,7 +71,7 @@ function Case ({ data }) {
   return (
     <Col lg={4}>
       <Link href={data.slug}><a>
-        <Hexadone imageUrl={data.imageUrl}>
+        <Hexadone imageUrl={data.imageUrl} hover>
           <h3>{ data.name }</h3>
           <p>{ data.shortDescription }</p>
         </Hexadone>

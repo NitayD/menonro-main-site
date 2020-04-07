@@ -3,6 +3,7 @@ import Preloader from '../Preloader/Preloader'
 import Background from '../Bg'
 
 
+
 const fav = process.browser ? window.document.getElementById('fav') : false
 let currentStep = 1
 const maxSteps = 20

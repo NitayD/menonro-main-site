@@ -47,7 +47,10 @@ const FirstScreen = () => {
                 <Link href="about">
                   <a>
                     <HexadonMain vAlign="center" setRef={leftTopSet} animated>
-                      Обо мне
+                      <div className="hexa">
+                        Обо мне
+                      </div>
+                      <img src="/static/images/icons/man.png" alt="" className="hexa__bg"/>
                     </HexadonMain>
                   </a>
                 </Link>
@@ -56,7 +59,10 @@ const FirstScreen = () => {
                 <Link href="cases">
                   <a>
                     <HexadonMain vAlign="center" setRef={leftBottomSet} animated>
-                      Кейсы
+                      <div className="hexa">
+                        Кейсы
+                      </div>
+                      <img src="/static/images/icons/case.png" alt="" className="hexa__bg"/>
                     </HexadonMain>
                   </a>
                 </Link>
@@ -81,7 +87,10 @@ const FirstScreen = () => {
                 <Link href="philosophy">
                   <a>
                     <HexadonMain vAlign="center" setRef={rightTopSet} animated>
-                      Философия
+                      <div className="hexa">
+                        Философия
+                      </div>
+                      <img src="/static/images/icons/yin-yang.png" alt="" className="hexa__bg"/>
                     </HexadonMain>
                   </a>
                 </Link>
@@ -90,7 +99,10 @@ const FirstScreen = () => {
                 <Link href="contacts">
                   <a>
                     <HexadonMain vAlign="center" setRef={rightBottomSet} animated>
-                      Контакты
+                      <div className="hexa">
+                        Контакты
+                      </div>
+                      <img src="/static/images/icons/contact.png" alt="" className="hexa__bg"/>
                     </HexadonMain>
                   </a>
                 </Link>
@@ -133,6 +145,19 @@ const FirstScreen = () => {
         .overlay { position: relative; z-index: 19; }
         .toDown { transform: translateY(100%); }
         .toTop { transform: translateY(-100%); }
+
+        .hexa {
+          position: relative;
+          z-index: 3;
+          &__bg {
+            position: absolute;
+            opacity: .2;
+            top: 10px; left: 10px; right: 10px; bottom: 10px;
+            object-fit: contain;
+            z-index: 2;
+            width: calc(100% - 20px); height: calc(100% - 20px);
+          }
+        }
       `}</style>
     </>
   )
