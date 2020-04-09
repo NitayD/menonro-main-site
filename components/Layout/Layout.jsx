@@ -3,6 +3,9 @@ import Preloader from '../Preloader/Preloader'
 import Background from '../Bg'
 
 
+import { MenuContextProvider } from '../../contexts/MenuContext'
+
+import Menu from '../Menu/Menu'
 
 const fav = process.browser ? window.document.getElementById('fav') : false
 let currentStep = 1
@@ -20,8 +23,9 @@ function changeFav(path) {
 const Layout = ({ children }) => {
   changeFav('/static/images/favicons/fav')
   return (
-    <>
+    <MenuContextProvider>
       {/* <Preloader /> */}
+      <Menu/>
       <Background/>
       <main>
         {children}
@@ -32,7 +36,7 @@ const Layout = ({ children }) => {
           z-index: 10;
         }
       `}</style>
-    </>
+    </MenuContextProvider>
 )
 }
 

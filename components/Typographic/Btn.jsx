@@ -6,6 +6,7 @@ export default function Btn({ direction = 'center', children, onClick = ()=>{} }
             {children}
             <style jsx>{`
                 button {
+                    cursor: pointer;
                     border: none;
                     position: relative;
                     display: inline-flex;

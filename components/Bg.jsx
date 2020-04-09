@@ -21,8 +21,9 @@ export default class Background extends Component {
   generateGrid() {
     const root = this.state.root
     const cv = root.getContext("2d");
-    let w = root.width = window.document.body.clientWidth
-    let h = root.height = window.document.body.clientHeight
+    let w = root.width = window.innerWidth
+    let h = root.height = window.innerHeight
+    console.log(h)
     const hexadons = {}
     function polygon(x,y,ns,s) {
       this.shape = new Path2D();

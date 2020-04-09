@@ -10,6 +10,14 @@ const FirstScreen = () => {
   const [rightBottom, rightBottomSet] = useState()
   
   const [center, centerSet] = useState()
+  
+  const allHexadons = [
+    leftTop,
+    rightTop,
+    leftBottom,
+    rightBottom,
+    center
+  ]
 
   let startIndex = 20
   let startTimer = 600
@@ -28,12 +36,11 @@ const FirstScreen = () => {
       element.style.transform = `translate(0px, 0px)`
     }, startTimer)
     startTimer += 100
+    return element
   }
-  animate(leftTop)
-  animate(rightTop)
-  animate(leftBottom)
-  animate(rightBottom)
-  animate(center)
+  allHexadons.forEach(elem => {
+    animate(elem)
+  })
 
   return (
     <>
@@ -141,11 +148,18 @@ const FirstScreen = () => {
             justify-content: center;
           }
         }
-        .h0 { height: 0; position: relative; z-index: 20; }
-        .overlay { position: relative; z-index: 19; }
-        .toDown { transform: translateY(100%); }
-        .toTop { transform: translateY(-100%); }
-
+        @media screen and (min-width: 768px) {
+          .h0 { height: 0; position: relative; z-index: 20; }
+          .overlay { position: relative; z-index: 19; }
+          .toDown { transform: translateY(100%); }
+          .toTop { transform: translateY(-100%); }
+        }
+        @media screen and (max-width: 767px) {
+          .row > div {
+            margin-top: 15px;
+            margin-bottom: 15px;
+          }
+        }
         .hexa {
           position: relative;
           z-index: 3;
@@ -157,6 +171,15 @@ const FirstScreen = () => {
             z-index: 2;
             width: calc(100% - 20px); height: calc(100% - 20px);
           }
+        }
+
+        a .hexa__bg {
+          transition: filter .1s ease-out, opacity .2s ease-out;
+        }
+
+        a:hover .hexa__bg {
+          filter: blur(3px);
+          opacity: .4;
         }
       `}</style>
     </>

@@ -81,9 +81,6 @@ export default class HexadonMain extends PureComponent {
                 ${ hover ? `background-size: auto 140%;` : '' }
               }
             }
-            &Container:hover &InnerCenter > * {
-              ${ hover ? `transform: scale(.9);` : '' }
-            }
             &:after {
               ${ imageUrl ? `` : ''}
               position: absolute;
