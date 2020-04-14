@@ -4,9 +4,7 @@ import Link from 'next/link'
 import { Container, Row, Col } from 'react-bootstrap'
 import Hexadone from '../FirstScreen/HexagonMain'
 
-import ContentTitle from '../Typographic/ContentTitle'
-import BackBtn from '../Typographic/BackBtn'
-import MenuBtn from '../Typographic/MenuBtn'
+import Header from '../Layout/Header'
 
 import cases from './cases.json'
 
@@ -19,23 +17,7 @@ class Cases extends Component {
     const iteribleArr = Array.apply(null, Array(Math.ceil(gridedCasesThree.length / 3))).map(()=>{})
     return (
       <>
-        <Container>
-          <Row className="justify-content-center">
-            <Col sm="auto">
-              <div className="mt-5 mb-3">
-                <BackBtn/>
-              </div>
-            </Col>
-            <Col sm="auto">
-              <ContentTitle>Выполненные проекты</ContentTitle>
-            </Col>
-            <Col sm="auto">
-              <div className="mt-5 mb-3">
-                <MenuBtn/>
-              </div>
-            </Col>
-          </Row>
-        </Container>
+        <Header title="Выполненные проекты"/>
 
         <Container className="mt-5">
           {

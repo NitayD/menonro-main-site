@@ -16,6 +16,16 @@ export default class ContentTitle extends PureComponent {
             color: black;
             font-weight: 700;
             padding: 0 15px;
+            @media screen and (max-width: 991px) {
+              font-size: 26px;
+            }
+            @media screen and (max-width: 767px) {
+              font-size: 20px;
+            }
+            @media screen and (max-width: 487px) {
+              font-size: 18px;
+              padding: 0px;
+            }
             &:after, &:before {
               content: '';
               width: 0; 

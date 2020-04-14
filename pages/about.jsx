@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Head from 'next/head'
 import Layout from '../components/Layout/Layout'
 
-class Home extends Component {
+class About extends Component {
 
   render() {
     return (
@@ -16,4 +16,4 @@ class Home extends Component {
   }
 }
 
-export default Home
+export default About
