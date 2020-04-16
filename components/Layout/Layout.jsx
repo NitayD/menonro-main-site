@@ -1,6 +1,7 @@
 import React from 'react'
 import Preloader from '../Preloader/Preloader'
 import Background from '../Bg'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 
 import { MenuContextProvider } from '../../contexts/MenuContext'
@@ -36,6 +37,7 @@ const Layout = ({ children }) => {
           z-index: 10;
         }
       `}</style>
+      {/* <style jsx global>{bootstrap}</style> */}
     </MenuContextProvider>
 )
 }

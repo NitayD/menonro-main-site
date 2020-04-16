@@ -1,14 +1,28 @@
 // import App from 'next/app'
-import { PureComponent } from 'react';
+import { PureComponent } from 'react'
+import { PageTransition } from 'next-page-transitions'
+
 
 
 import '../styles/global.sass'
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps, router }) {
   return <>
     <LoadFonts/>
-    <Component {...pageProps}/>
+    <PageTransition timeout={300} classNames="page-transition">
+      <Component {...pageProps} key={router.route}/>      
+    </PageTransition>
+    <style jsx global>{`
+    `}</style>
   </>
+}
+
+MyApp.getInitialProps = async ({ Component, router, ctx }) => {
+  let pageProps = {}
+  if (Component.getInitialProps) {
+    pageProps = await Component.getInitialProps(ctx)
+  }
+  return { pageProps }
 }
 
 // Only uncomment this method if you have blocking data requirements for

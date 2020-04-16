@@ -71,6 +71,7 @@ export default class HexadonMain extends PureComponent {
             `}
             transition: .6s ease;
             cursor: pointer;
+            
             &Container:before {
               content: '';
               position: absolute;
@@ -78,7 +79,10 @@ export default class HexadonMain extends PureComponent {
             }
             &Container:hover {
               .hex {
-                ${ hover ? `background-size: auto 140%;` : '' }
+                ${ hover ? `
+                  background-size: auto 140%;
+                  ${imageUrl ? '' : 'background-color: #c3c3c3;'}
+                ` : '' }
               }
             }
             &:after {

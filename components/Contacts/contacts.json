@@ -16,15 +16,15 @@
         "imgSrc": "/static/images/icons/social/discord.svg"
     },
     {
-        "href": "https://discord.gg/j92YZ76",
-        "imgSrc": "/static/images/icons/social/discord.svg"
-    },
-    {
-        "href": "https://tg.me/menonro",
+        "href": "https://telegram.im/menonro",
         "imgSrc": "/static/images/icons/social/telegram.svg"
     },
     {
         "href": "https://fb.me/menonro",
         "imgSrc": "/static/images/icons/social/facebook.svg"
+    },
+    {
+        "href": "tel:+77054939501",
+        "imgSrc": "/static/images/icons/social/phone.svg"
     }
 ]
