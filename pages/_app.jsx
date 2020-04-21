@@ -1,28 +1,40 @@
 // import App from 'next/app'
 import { PureComponent } from 'react'
 import { PageTransition } from 'next-page-transitions'
+import Background from '../components/Bg'
 
 
 
 import '../styles/global.sass'
 
-function MyApp({ Component, pageProps, router }) {
+function MyApp({ Component, pageProps }) {
   return <>
     <LoadFonts/>
-    <PageTransition timeout={300} classNames="page-transition">
-      <Component {...pageProps} key={router.route}/>      
+    <PageTransition timeout={100} classNames="page-transition">
+      <Component {...pageProps}/>      
     </PageTransition>
+    <Background/>
     <style jsx global>{`
-    `}</style>
+        .page-transition-enter {
+          opacity: 0;
+        }
+        .page-transition-enter-active {
+          opacity: 1;
+          transition: opacity 100ms;
+        }
+        .page-transition-exit {
+          opacity: 1;
+        }
+        .page-transition-exit-active {
+          opacity: 0;
+          transition: opacity 100ms;
+        }
+        .page-transition-exit > main {
+          transition: transform .1s ease-out;
+          transform: scale(0)
+        }
+      `}</style>
   </>
-}
-
-MyApp.getInitialProps = async ({ Component, router, ctx }) => {
-  let pageProps = {}
-  if (Component.getInitialProps) {
-    pageProps = await Component.getInitialProps(ctx)
-  }
-  return { pageProps }
 }
 
 // Only uncomment this method if you have blocking data requirements for

@@ -7,6 +7,9 @@ export default class Background extends Component {
       root: false
     }
   }
+  shouldComponentUpdate() {
+    return false
+  }
   componentDidMount() {
     this.setState({root: document.getElementById('bg')}, () => new Promise((res, rej) => {
       try {

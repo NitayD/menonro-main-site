@@ -9,27 +9,28 @@ class FirstScreen extends Component  {
     leftBottom: null,
     rightBottom: null,
     rightTop: null,
-    center: null
+    center: null,
+    isAnimated: false
   }
-  componentDidMount() {
-    const { leftTop, leftBottom, rightBottom, rightTop, center } = this.state
-    const allHexadons = [
-      leftTop,
-      rightTop,
-      leftBottom,
-      rightBottom,
-      center
-    ]
 
+  componentDidUpdate() {
+    if (this.state.isAnimated) return
+    const { leftTop, leftBottom, rightTop, rightBottom, center } = this.state
+    const allHexadons = [ leftTop, leftBottom, rightTop, rightBottom, center ]
     let startIndex = 20
-    let startTimer = 600
-    allHexadons.forEach(elem => {
-      this.animate(elem)
-      startTimer += 100
-    })
+    let startTimer = 50
+    if (allHexadons.filter(elem=>!!elem).length === 5) {
+      this.setState({isAnimated: true})
+      allHexadons.forEach(elem => {
+        this.animate(elem, ++startIndex, startTimer)
+        startTimer += 100
+      })
+    } else {
+      return
+    }
   }
 
-  animate = (element) => {
+  animate = (element, startIndex = 20, startTimer) => {
     if (!element) return setTimeout(() => this.animate(element), 10)
     const coords = element.getBoundingClientRect()
     const width = window.document.body.clientWidth
@@ -37,7 +38,7 @@ class FirstScreen extends Component  {
     element.style.opacity = 0
     element.style.transitionDuration = 0
     element.style.transform = `translate(${width / 2 - coords.x - coords.width / 2}px, ${height / 2 - coords.y  - coords.height / 2}px)`
-    element.style.zIndex = ++startIndex
+    element.style.zIndex = startIndex
     setTimeout(() => {
       element.style.opacity = 100
       element.style.transitionDuration = `${0.3}s`
@@ -50,8 +51,6 @@ class FirstScreen extends Component  {
     return (ref) => {
       const newState = {}
       newState[attr] = ref
-      console.log(newState)
-      
       this.setState(newState)
     }
   }
@@ -136,21 +135,16 @@ class FirstScreen extends Component  {
               
           </div>
         </section>
-        <style jsx>{`
+        <style jsx>
+          {`
           .first_screen {
-            // background: #000 url('/static/bgs/menonro-bg.jpg') no-repeat 50% 50%;
-            //background-color: #212121;
-            //background-size: cover;
             position: relative;
             min-height: 100vh;
             color: #fff;
             &__overlay {
               z-index: 1;
               position: absolute;
-              top: 0;
-              left: 0;
-              right: 0;
-              bottom: 0;
+              top: 0; left: 0; right: 0; bottom: 0;
               background-color: rgba(33,33,33,.3);
             }
             &__inner {
@@ -188,16 +182,25 @@ class FirstScreen extends Component  {
               width: calc(100% - 20px); height: calc(100% - 20px);
             }
           }
-
           a .hexa__bg {
             transition: filter .1s ease-out, opacity .2s ease-out;
           }
-
           a:hover .hexa__bg {
             filter: blur(3px);
             opacity: .4;
           }
-        `}</style>
+
+          @media screen and (max-width: 767px) {
+            .container {
+              display: flex;
+              flex-direction: column;
+              > *:nth-child(2) {
+                order: -1;
+              }
+            }
+          }
+        `}
+        </style>
       </>
     )
   }

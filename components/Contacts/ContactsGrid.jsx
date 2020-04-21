@@ -25,7 +25,7 @@ export default class ContactsGrid extends Component {
 
 const ContactLink = ({ href, imgSrc }) => {
     return (
-        <div className="col-12 col-md-4 col-lg-3">
+        <div className="col-12 col-sm-6 col-md-4 col-lg-3">
             <a href={href} target="_blank">
                 <HexagonContainer vAlign="center" animated hover>
                     <img src={imgSrc}/>
@@ -37,9 +37,23 @@ const ContactLink = ({ href, imgSrc }) => {
                 }
                 div {
                     margin-top: 30px;
-                    &:nth-child(even) {
-                        margin-top: 60px;
-                        transform: translateY(50%);
+                    @media screen and (min-width: 992px) {
+                        &:nth-child(even) {
+                            margin-top: 60px;
+                            transform: translateY(50%);
+                        }
+                    }
+                    @media screen and (min-width: 576px) and (max-width: 767px) {
+                        &:nth-child(even) {
+                            margin-top: 60px;
+                            transform: translateY(50%);
+                        }
+                    }
+                    @media screen and (min-width: 768px) and (max-width: 991px) {
+                        &:nth-child(3n-1) {
+                            margin-top: 60px;
+                            transform: translateY(50%);
+                        }
                     }
                 }
             `}</style>

@@ -1,6 +1,5 @@
 import React from 'react'
 import Preloader from '../Preloader/Preloader'
-import Background from '../Bg'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 
@@ -27,7 +26,6 @@ const Layout = ({ children }) => {
     <MenuContextProvider>
       {/* <Preloader /> */}
       <Menu/>
-      <Background/>
       <main>
         {children}
       </main>
