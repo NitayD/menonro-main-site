@@ -1,54 +1,23 @@
 import React, { Component } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
-import HexagonContainer from '../FirstScreen/HexagonMain'
+import aboutData from './about.json'
 
 export default class AboutGrid extends Component {
     render() {
         return (
             <Container>
-                <h2>Приветствую!</h2>
-                <p>
-                    Меня зовут Нитай Джаксибаев и я WEB Разработчик.
-                </p>
-                <p>
-                    Я попал в мир WEB разработки ещё во времена окончания школы, и начинался он с простого "HTML за 1 час".
-                    Меня эта темя затянула и я решил пройти курс от Нетологии по PHP.
-                </p>
-                <p>
-                    На момент поступления в колледж я овладел базовыми PHP+MySQL, а так же базовой вёрстке при помощи Bootstrap 3 и ванильного CSS 3 + HTML 5.
-                </p>
-                <p>
-                    Спустя пол года я прошёл курс от Академии вёрстки авторства Артёма Исламова, большой акулы фриланса :), 
-                    и устроился младшим front-end разработчиком в небольшую студию. Тут я изучу React+Next и научусь делать SPA приложения.
-                </p>
-                <p>
-                    Отработав год студия будет распущена, но редкие фриланс заказы продолжат поступать. 
-                    В это время я возвращаюсь в колледж, параллельно подрабатывая у родственника. Продолжаю совершенствоваться 
-                    в React и Next, делаю первые прототипы ботов для Telegram и VK.
-                </p>
-                <p>
-                    Так же выполняя разные поручения от родственника, я немного освоился в 
-                    фотографии, фотообработке, видеосъёмке, видеообработке и ведении соц сетей.
-                </p>
-                <p>
-                    Как разработчик, не могу гордится этим, но как разносторонне-развитый человек я рад, что не ограничился одним лишь умением кодить.
-                </p>
-                <style jsx>{`
-                    h2 {
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        margin: 1rem auto;
-                        font-size: 2.5rem;
-                        font-weight: 700;
+                <ul>
+                    {
+                        aboutData.map(data => (
+                            <AboutItem {...data} />
+                        ))
                     }
-                    p {
-                        font-size: 1.75rem;
-                        font-family: sans-serif;
-                        letter-spacing: 1px;
-                        line-height: 1.4;
-                        margin: 1rem auto;
-                        text-shadow: 1px 1px 1px gray;
+                </ul>
+                <style jsx>{`
+                    ul {
+                        display: flex;
+                        flex-direction: column;
+                        width: 100%;
                     }
                 `}</style>
             </Container>
@@ -57,11 +26,93 @@ export default class AboutGrid extends Component {
 }
 
 
-const AboutItem = ({ href, imgSrc }) => {
+const AboutItem = ({ data, title, text }) => {
     return (
-        <div>
-
-        </div>
+        <li>
+            <small className="time">{data}</small>
+            <h4 className="title">{title}</h4>
+            <p className="text">{text}</p>
+            <style jsx>
+                {`
+                    li {
+                        display: block;
+                        position: relative;
+                        width: 50%;
+                        padding: 15px 30px;
+                        transition: transform .3s ease-out;
+                        &:first-child:before {
+                            height: 100%;
+                            top: calc(20px + .5rem);
+                            height: calc(100% - 20px);
+                        }
+                        &:last-child:before {
+                            border-bottom-left-radius: 15px 20px;
+                            border-bottom-right-radius: 15px 20px;
+                        }
+                        &:nth-child(even) {
+                            margin-left: auto;
+                            &:after, &:before {
+                                right: auto;
+                                left: 0;
+                                transform: translateX(-50%);
+                            }
+                        }
+                        &:nth-child(odd) {
+                            text-align: right;
+                        }
+                        &:after, &:before {
+                            content: '';
+                            position: absolute;
+                            left: auto;
+                            right: 0;
+                            transform: translateX(50%);
+                        }
+                        &:after {
+                            width: 20px;
+                            border-radius: 50%;
+                            border: 5px solid #c3c3c3;
+                            height: 20px;
+                            top: calc(15px + 0.55rem);
+                            background-color: #212121;
+                            z-index: 12;
+                            transition: background-color .3s ease-out,
+                                border-width .3s ease-out;
+                        }
+                        &:before {
+                            width: 5px;
+                            height: 100%;
+                            top: 0;
+                            background-color: #c3c3c3;
+                            z-index: 11;
+                        }
+                        &:hover:after {
+                            background-color: #cecece;
+                            border-width: 2px;
+                        }
+                        &:hover:nth-child(odd) > * {
+                            transform: translateX(-15px);
+                        }
+                        &:hover:nth-child(even) > * {
+                            transform: translateX(15px);
+                        }
+                        > * {
+                            display: block;
+                            transition: transform .3s ease-out;
+                        }
+                    }
+                    .time {
+                        font-size: 1.5rem;
+                    }
+                    .title {
+                        font-size: 1.75rem;
+                    }
+                    .text {
+                        font-size: 1.15rem;
+                        font-family: sans-serif;
+                    }
+                `}
+            </style>
+        </li>
     );
 }
 

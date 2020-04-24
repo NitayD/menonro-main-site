@@ -183,10 +183,9 @@ class FirstScreen extends Component  {
             }
           }
           a .hexa__bg {
-            transition: filter .1s ease-out, opacity .2s ease-out;
+            transition: opacity .1s ease-out;
           }
           a:hover .hexa__bg {
-            filter: blur(3px);
             opacity: .4;
           }
 
