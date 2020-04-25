@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
+import Link from 'next/link'
 import { Container, Row, Col } from 'react-bootstrap'
-import aboutData from './about.json'
+import biographyData from './biography.json'
 
-export default class AboutGrid extends Component {
+export default class BiographyGrid extends Component {
     render() {
         return (
             <Container>
                 <ul>
                     {
-                        aboutData.map(data => (
-                            <AboutItem {...data} />
+                        biographyData.map((data, index) => (
+                            <BiographyItem {...data} key={`biography-item-${index}`}/>
                         ))
                     }
                 </ul>
@@ -26,12 +27,22 @@ export default class AboutGrid extends Component {
 }
 
 
-const AboutItem = ({ data, title, text }) => {
+const BiographyItem = ({ data, title, text, link = false }) => {
     return (
         <li>
             <small className="time">{data}</small>
             <h4 className="title">{title}</h4>
             <p className="text">{text}</p>
+            {
+                link 
+                    ?
+                        <Link href={link.url}>
+                            <a className="link">
+                                {link.title}
+                            </a>
+                        </Link>
+                    : null
+            }
             <style jsx>
                 {`
                     li {
@@ -109,6 +120,9 @@ const AboutItem = ({ data, title, text }) => {
                     .text {
                         font-size: 1.15rem;
                         font-family: sans-serif;
+                    }
+                    .link {
+                        font-size: 1.35rem;
                     }
                 `}
             </style>

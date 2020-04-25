@@ -13,7 +13,8 @@ function MyApp({ Component, pageProps }) {
     </PageTransition>
     <Background/>
     <style jsx global>{`
-        .page-transition-enter > main {
+        .page-transition-enter {
+          overflow-x: hidden;
         }
         .page-transition-enter-active > main {
           animation: transitionEnter .3s ease-out;

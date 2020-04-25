@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Layout from '../components/Layout/Layout'
 
 import Header from '../components/Layout/Header'
-import AboutGrid from '../components/About/AboutGrid'
+import BiographyGrid from '../components/Biography/BiographyGrid'
 
 class About extends Component {
 
@@ -11,10 +11,10 @@ class About extends Component {
     return (
       <Layout>
         <Head>
-          <title>Обо мне - Menonro</title>
+          <title>Биография - Menonro</title>
         </Head>
-        <Header title="Обо мне"/>
-        <AboutGrid />
+        <Header title="Биография"/>
+        <BiographyGrid />
       </Layout>
     )
   }

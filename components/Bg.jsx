@@ -49,16 +49,12 @@ export default class Background extends Component {
     let h = root.height = window.innerHeight
 
     let hexagons = this.generateHexagons(w, h, colors)
+    cv.lineWidth = 1;
     const draw = () => {
-      console.log('draw')
-      cv.clearRect(0, 0, w, h);
-      cv.lineWidth = 1;
-      
+      // cv.clearRect(0, 0, w, h);
       hexagons.forEach((item) => {
         const currentColor = colors[item.speed][item.currentStep].color
-        if (cv.fillStyle !== currentColor) {
-          cv.fillStyle = currentColor
-        }
+        if (cv.fillStyle !== currentColor) { cv.fillStyle = currentColor }
         cv.fill(item.mesh);
         const nextStep = item.duraction ? item.currentStep + 1 : item.currentStep - 1
         if (item.duraction) {
@@ -77,7 +73,7 @@ export default class Background extends Component {
           }
         }
       })
-      setTimeout(() => window.requestAnimationFrame(draw), 1000 / 60)
+      setTimeout(() => window.requestAnimationFrame(draw), 1000 / 24)
     }
     const reset = () => {
       w = root.width = window.innerWidth;

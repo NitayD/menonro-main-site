@@ -66,11 +66,11 @@ class FirstScreen extends Component  {
 
               <div className="row h0">
                 <div className="col-12 col-md-3">
-                  <Link href="about">
+                  <Link href="biography">
                     <a>
                       <HexadonMain vAlign="center" setRef={this.setRef('leftTop')} animated>
                         <div className="hexa">
-                          Обо мне
+                          Биография
                         </div>
                         <img src="/static/images/icons/about.svg" alt="" className="hexa__bg"/>
                       </HexadonMain>
